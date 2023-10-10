@@ -1,0 +1,27 @@
+<resources>
+    <declare-styleable name="GridTextView">
+        <attr name="text" format="string" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="color" />
+        <attr name="textPosition">
+            <enum name="startTop" value="0" />
+            <enum name="centerTop" value="1" />
+            <enum name="endTop" value="2" />
+            <enum name="startCenter" value="3" />
+            <enum name="center" value="4" />
+            <enum name="endCenter" value="5" />
+            <enum name="startBottom" value="6" />
+            <enum name="centerBottom" value="7" />
+            <enum name="endBottom" value="8" />
+        </attr>
+        <attr name="colGap" format="dimension" />
+        <attr name="rowGap" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderThickness" format="dimension" />
+        <attr name="dashColor" format="color" />
+        <attr name="dashThickness" format="dimension" />
+        <attr name="dashLength" format="dimension" />
+        <attr name="dashGap" format="dimension" />
+    </declare-styleable>
+    <attr name="GridTextViewDefault" format="reference" />
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <color name="main_red">#F44336</color>-->
+<!--    <color name="error_red">#B00020</color>-->
+<!--    <color name="light_red">#FFCDD2</color>-->
+<!--    <color name="main_amber">#FFC107</color>-->
+<!--    <color name="dark_amber">#FFA000</color>-->
+<!--    <color name="gains_boro">#DCDCDC</color>-->
+    <color name="min_text_color">#717171</color>
+    <color name="han_bai_yu">#F8F4ED</color>
+<!--    <color name="test">#fffbfe</color>-->
+<!--    <color name="tes2">#1c1b1f</color>-->
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SmallHint" parent="TextAppearance.AppCompat.Title.Inverse">
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:textColor">@color/min_text_color</item>
+    </style>
+    <style name="SmallTag" parent="@style/TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:background">?attr/colorPrimaryContainer</item>
+        <item name="android:padding">@dimen/padding_tiny</item>
+    </style>
+
+    <style name="SharpFlatTextButton" parent="@style/Widget.Material3.Button.TonalButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.M3.Sys.Shape.Corner.None</item>
+    </style>
+
+    <style name="Test" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="shapeAppearance">@style/ShapeAppearance.M3.Sys.Shape.Corner.None</item>
+    </style>
+
+    <style name="GridTextView" parent="">
+        <item name="textColor">?attr/colorOnSurface</item>
+        <item name="textSize">32sp</item>
+        <item name="textPosition">startTop</item>
+        <item name="colGap">8dp</item>
+        <item name="rowGap">8dp</item>
+        <item name="borderColor">?attr/colorOnSurface</item>
+        <item name="borderThickness">1dp</item>
+        <item name="dashColor">#999</item>
+        <item name="dashThickness">2dp</item>
+        <item name="dashLength">2dp</item>
+        <item name="dashGap">2dp</item>
+    </style>
+</resources>

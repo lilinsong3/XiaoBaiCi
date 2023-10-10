@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="showBottomNav"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.my.MyFragment"
+        tools:layout="@layout/fragment_my" >
+        <argument
+            android:name="showBottomNav"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_my_to_favorites"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_my_to_histories"
+            app:destination="@id/historiesFragment" />
+        <action
+            android:id="@+id/action_my_to_settings"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.favorites.FavoritesFragment"
+        android:label="@string/short_my_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_favorites_to_favorite"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_favorites_to_favoriteEdit"
+            app:destination="@id/favoriteEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historiesFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.histories.HistoriesFragment"
+        android:label="@string/short_browsing_histories"
+        tools:layout="@layout/fragment_histories">
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.settings.SettingsFragment"
+        android:label="@string/short_settings"
+        tools:layout="@xml/root_preferences">
+        <action
+            android:id="@+id/action_settings_to_aboutApp"
+            app:destination="@id/aboutAppFragment" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/settingsFragment"-->
+<!--        android:name="com.github.lilinsong3.xiaobaici.ui.settings.SettingsFragment"-->
+<!--        tools:layout="@xml/" >-->
+<!--    </fragment>-->
+    <fragment
+        android:id="@+id/hanziWordFragment"
+        android:label="@string/short_word_detail"
+        android:name="com.github.lilinsong3.xiaobaici.ui.hanziword.HanziWordFragment"
+        tools:layout="@layout/fragment_hanzi_word">
+        <argument
+            android:name="hanziWordId"
+            app:argType="long" />
+        <argument
+            android:name="browsed"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+    <action android:id="@+id/action_global_hanziWord" app:destination="@id/hanziWordFragment" />
+    <dialog
+        android:id="@+id/favoriteSelectionBottomSheet"
+        android:name="com.github.lilinsong3.xiaobaici.ui.favoriteselection.FavoriteSelectionBottomSheet"
+        tools:layout="@layout/bottom_sheet_favorite_selection">
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="hanziWordId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </dialog>
+    <action android:id="@+id/action_global_favoriteSelection" app:destination="@id/favoriteSelectionBottomSheet"/>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.favorite.FavoriteFragment"
+        android:label="@string/short_my_favorite"
+        tools:layout="@layout/fragment_favorite">
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="favoriteId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_favorite_to_favoriteEdit"
+            app:destination="@id/favoriteEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.aboutapp.AboutAppFragment"
+        android:label="@string/short_about_app"
+        tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/favoriteEditFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.favoriteedit.FavoriteEditFragment"
+        tools:layout="@layout/fragment_favorite_edit">
+        <argument
+            android:name="favoriteId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.github.lilinsong3.xiaobaici.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search" >
+        <argument
+            android:name="showDefaultToolbar"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+</navigation>

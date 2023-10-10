@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/padding_normal"
+    tools:showIn="@layout/fragment_histories">
+
+    <TextView
+        android:id="@+id/history_text_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/history_text_datetime"
+        tools:text="@string/short_placeholder" />
+
+    <TextView
+        android:id="@+id/history_text_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:gravity="center"
+        android:drawablePadding="@dimen/padding_small"
+        app:drawableStartCompat="@drawable/ic_history"
+        app:layout_constraintStart_toStartOf="@id/history_text_subject"
+        app:layout_constraintTop_toBottomOf="@id/history_text_subject"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="2023-06-27 12:32:22" />
+
+    <ImageView
+        android:id="@+id/history_icon_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/short_delete"
+        android:adjustViewBounds="true"
+        android:padding="@dimen/padding_small"
+        app:layout_constraintWidth_min="@dimen/limit_icon_size"
+        app:layout_constraintWidth_max="@dimen/limit_icon_size"
+        app:layout_constraintTop_toTopOf="@id/history_text_subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/history_text_datetime"
+        app:srcCompat="@drawable/ic_delete_forever" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

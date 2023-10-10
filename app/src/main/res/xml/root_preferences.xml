@@ -1,0 +1,71 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    <PreferenceCategory app:title="@string/messages_header">-->
+
+<!--        <EditTextPreference-->
+<!--            app:key="signature"-->
+<!--            app:title="@string/signature_title"-->
+<!--            app:useSimpleSummaryProvider="true" />-->
+
+<!--        <ListPreference-->
+<!--            app:defaultValue="reply"-->
+<!--            app:entries="@array/reply_entries"-->
+<!--            app:entryValues="@array/reply_values"-->
+<!--            app:key="reply"-->
+<!--            app:title="@string/reply_title"-->
+<!--            app:useSimpleSummaryProvider="true" />-->
+
+<!--    </PreferenceCategory>-->
+
+<!--    <PreferenceCategory app:title="@string/sync_header">-->
+
+<!--        <SwitchPreferenceCompat-->
+<!--            app:key="sync"-->
+<!--            app:title="@string/sync_title" />-->
+
+<!--        <SwitchPreferenceCompat-->
+<!--            app:dependency="sync"-->
+<!--            app:key="attachment"-->
+<!--            app:summaryOff="@string/attachment_summary_off"-->
+<!--            app:summaryOn="@string/attachment_summary_on"-->
+<!--            app:title="@string/attachment_title" />-->
+
+<!--    </PreferenceCategory>-->
+
+<!--    <SwitchPreferenceCompat-->
+<!--        app:key="night"-->
+<!--        app:title="@string/short_night_mode"-->
+<!--        app:summary="@string/short_switch_night"-->
+<!--        app:iconSpaceReserved="false" />-->
+
+    <ListPreference
+        app:defaultValue="-1"
+        app:entries="@array/night_mode_entries"
+        app:entryValues="@array/night_mode_values"
+        app:key="nightMode"
+        app:title="@string/short_night_mode"
+        app:dialogTitle="@string/short_switch_night"
+        app:negativeButtonText="@string/short_cancel"
+        app:summary="@string/short_switch_night"
+        app:allowDividerAbove="true"
+        app:allowDividerBelow="true"
+        app:widgetLayout="@layout/view_ic_forward"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        app:key="feedback"
+        app:title="@string/short_feedback"
+        app:widgetLayout="@layout/view_ic_forward"
+        app:allowDividerAbove="true"
+        app:allowDividerBelow="true"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        app:key="aboutApp"
+        app:title="@string/short_about_app"
+        app:widgetLayout="@layout/view_ic_forward"
+        app:allowDividerAbove="true"
+        app:allowDividerBelow="true"
+        app:iconSpaceReserved="false" />
+
+</PreferenceScreen>

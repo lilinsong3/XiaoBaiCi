@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/margin_normal"
+    android:paddingVertical="@dimen/padding_small"
+    tools:showIn="@layout/fragment_favorites">
+
+    <TextView
+        android:id="@+id/text_nav_favorite_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/short_favorite"
+        android:textAppearance="?attr/textAppearanceTitleLarge"
+        app:layout_constraintBottom_toTopOf="@id/text_nav_favorite_count"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/text_nav_favorite_tag"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_nav_favorite_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_small"
+        android:text="@string/short_default"
+        android:background="?attr/colorSecondaryContainer"
+        android:textAppearance="?attr/textAppearanceLabelSmall"
+        app:layout_constraintTop_toTopOf="@id/text_nav_favorite_name"
+        app:layout_constraintStart_toEndOf="@id/text_nav_favorite_name"
+        app:layout_constraintBottom_toBottomOf="@id/text_nav_favorite_name" />
+
+    <TextView
+        android:id="@+id/text_nav_favorite_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/long_hanzi_word_count"
+        android:textAppearance="?attr/textAppearanceLabelSmall"
+        app:layout_constraintStart_toStartOf="@id/text_nav_favorite_name"
+        app:layout_constraintTop_toBottomOf="@id/text_nav_favorite_name"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <include layout="@layout/view_ic_forward"
+        android:id="@+id/ic_favorite_forward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/long_go_check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

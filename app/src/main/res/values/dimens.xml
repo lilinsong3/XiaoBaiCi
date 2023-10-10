@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_size_medium">32sp</dimen>
+    <dimen name="font_size_normal">24sp</dimen>
+    <dimen name="font_size_small">6sp</dimen>
+    <dimen name="gap_line">1dp</dimen>
+    <dimen name="gap_small">8dp</dimen>
+    <dimen name="gap_normal">16dp</dimen>
+    <dimen name="margin_large">64dp</dimen>
+    <dimen name="margin_medium">32dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="padding_tiny">1dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_medium">32dp</dimen>
+    <dimen name="padding_large">64dp</dimen>
+    <dimen name="padding_extra_large">128dp</dimen>
+    <dimen name="limit_icon_size">48dp</dimen>
+    <dimen name="medium_icon_size">32dp</dimen>
+    <dimen name="thin_icon_size">24dp</dimen>
+    <dimen name="m3_max_text_field">488dp</dimen>
+    <dimen name="m3_min_h_bottom_appbar">80dp</dimen>
+    <dimen name="suitable_widget_width">88dp</dimen>
+</resources>

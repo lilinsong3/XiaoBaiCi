@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/padding_normal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/i_sh_icon_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/short_history"
+        android:padding="@dimen/padding_small"
+        android:adjustViewBounds="true"
+        app:layout_constraintWidth_min="@dimen/limit_icon_size"
+        app:layout_constraintHeight_min="@dimen/limit_icon_size"
+        app:srcCompat="@drawable/ic_history"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/i_sh_text_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/short_history"
+        app:layout_constraintLeft_toRightOf="@id/i_sh_icon_history"
+        app:layout_constraintTop_toTopOf="@id/i_sh_icon_history"
+        app:layout_constraintBottom_toBottomOf="@id/i_sh_icon_history"
+        />
+    
+    <ImageView
+        android:id="@+id/i_sh_icon_delete"
+        android:layout_width="@dimen/limit_icon_size"
+        android:layout_height="@dimen/limit_icon_size"
+        android:padding="@dimen/padding_small"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_close"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/short_delete" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

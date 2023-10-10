@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/padding_normal"
+    tools:context=".ui.hanziword.HanziWordFragment">
+
+    <com.github.lilinsong3.xiaobaici.view.GridTextView
+        android:id="@+id/hw_text_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="词语词语词语词语词语词语" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/hw_flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:flow_horizontalGap="@dimen/gap_small"
+        app:flow_wrapMode="chain"
+        app:flow_horizontalStyle="packed"
+        app:flow_horizontalBias="0"
+        app:layout_constraintTop_toBottomOf="@id/hw_text_subject"
+        app:layout_constraintStart_toStartOf="@id/hw_text_subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:constraint_referenced_ids="hw_text_pinyin,hw_btn_copy,hw_cb_favorite" />
+
+    <Button
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:id="@+id/hw_text_pinyin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/padding_tiny"
+        android:paddingHorizontal="@dimen/padding_small"
+        app:drawableEndCompat="@drawable/anim_volume_play"
+        tools:text="pin yin pin yin pin yin pin yin pin yin" />
+
+    <Button
+        android:id="@+id/hw_btn_copy"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/short_copy"
+        app:icon="@drawable/ic_copy"
+        app:iconTint="?attr/colorOnSurface" />
+
+    <com.github.lilinsong3.xiaobaici.view.NonAutomaticCheckBox
+        android:id="@+id/hw_cb_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/short_favorite"
+        android:button="@drawable/sl_favorite" />
+
+    <TextView
+        android:id="@+id/hw_text_meaning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_small"
+        app:layout_constraintStart_toStartOf="@id/hw_flow"
+        app:layout_constraintTop_toBottomOf="@id/hw_flow"
+        tools:text="测试测试测试测试测试测试测试测试测试测试测试测试测试测试" />
+
+    <TextView
+        android:id="@+id/hw_text_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_small"
+        app:layout_constraintStart_toStartOf="@id/hw_text_meaning"
+        app:layout_constraintTop_toBottomOf="@id/hw_text_meaning"
+        tools:text="测试测试测试测试测试测试测试测试测试测试测试" />
+
+    <TextView
+        android:id="@+id/hw_text_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_small"
+        app:layout_constraintStart_toStartOf="@id/hw_text_usage"
+        app:layout_constraintTop_toBottomOf="@id/hw_text_usage"
+        tools:text="测试测试测试测试测试测试测" />
+
+    <!--    <ViewStub-->
+<!--        android:id="@+id/stub_load_state"-->
+<!--        android:inflatedId="@+id/frame_load_state"-->
+<!--        android:layout="@layout/item_load_state"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

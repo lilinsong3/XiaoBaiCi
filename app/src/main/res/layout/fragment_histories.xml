@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.histories.HistoriesFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/histories_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:itemCount="22"
+        tools:listitem="@layout/item_browsing_history" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/histories_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:menu="@menu/toolbar_histories_menu" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/histories_chips_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/padding_normal"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed" >
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/histories_chip_all"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/short_all"
+                tools:checked="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/histories_chip_today"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/short_today" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/histories_chip_yesterday"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/short_yesterday" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/histories_chip_select_date"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/short_select_date" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

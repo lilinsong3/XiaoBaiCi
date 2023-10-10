@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/padding_small"
+    android:paddingHorizontal="@dimen/padding_normal"
+    android:background="@color/favorite_hanzi"
+    tools:showIn="@layout/fragment_favorite">
+
+    <TextView
+        android:id="@+id/fh_text_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fh_text_datetime"
+        tools:text="@string/short_placeholder" />
+
+    <TextView
+        android:id="@+id/fh_text_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        app:layout_constraintStart_toStartOf="@id/fh_text_subject"
+        app:layout_constraintTop_toBottomOf="@id/fh_text_subject"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="收藏时间：2023-06-27 12:32:22" />
+
+    <ImageView
+        android:id="@+id/fh_icon_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/fh_text_subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/fh_text_datetime"
+        android:contentDescription="@string/long_more_operations"
+        app:srcCompat="@drawable/ic_more_horiz" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

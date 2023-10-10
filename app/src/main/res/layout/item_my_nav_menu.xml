@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/fragment_my">
+
+    <ImageView
+        android:id="@+id/i_iv_head"
+        android:layout_width="@dimen/limit_icon_size"
+        android:layout_height="@dimen/limit_icon_size"
+        android:padding="@dimen/padding_small"
+        android:contentDescription="@string/long_nav_menu_item"
+        android:adjustViewBounds="true"
+        app:tint="?attr/colorOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/i_text_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_navigation" />
+
+    <TextView
+        android:id="@+id/i_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceTitleLarge"
+        app:layout_constraintBottom_toBottomOf="@id/i_iv_head"
+        app:layout_constraintStart_toEndOf="@id/i_iv_head"
+        app:layout_constraintTop_toTopOf="@id/i_iv_head"
+        tools:text="@string/short_placeholder" />
+
+    <ImageView
+        android:id="@+id/i_iv_tail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="@dimen/limit_icon_size"
+        android:minHeight="@dimen/limit_icon_size"
+        android:padding="@dimen/padding_small"
+        android:contentDescription="@string/long_go_check"
+        app:tint="?attr/colorOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_forward" />
+</androidx.constraintlayout.widget.ConstraintLayout>
