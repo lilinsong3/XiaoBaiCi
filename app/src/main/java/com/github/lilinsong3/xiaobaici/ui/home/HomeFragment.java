@@ -150,7 +150,7 @@ public class HomeFragment extends Fragment {
                         data,
                         () -> {
                             // must have data loaded first and then set adapter later so that ViewPager2 restores the position of page in case where configuration changes etc.
-                            if (binding.homePager.getAdapter() == null) {
+                            if (binding != null && binding.homePager.getAdapter() == null) {
                                 binding.homePager.setAdapter(hanziWordFragmentStateAdapter);
                             }
                         }

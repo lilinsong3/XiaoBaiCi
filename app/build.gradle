@@ -75,23 +75,12 @@ dependencies {
 
     def room_version = "2.5.0"
 
-    def work_version = "2.8.0"
-
     def fragment_version = "1.5.5"
 
     def autoDispose_version = "2.1.1"
 
     implementation "com.google.dagger:hilt-android:2.44"
     annotationProcessor "com.google.dagger:hilt-compiler:2.44"
-
-    // (Java only)
-    implementation "androidx.work:work-runtime:$work_version"
-
-    // optional - RxJava3 support
-    implementation "androidx.work:work-rxjava3:$work_version"
-
-    // optional - Test helpers
-    androidTestImplementation "androidx.work:work-testing:$work_version"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"

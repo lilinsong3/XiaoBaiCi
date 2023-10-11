@@ -124,7 +124,7 @@ public class HanziWordFragment extends Fragment {
                 clipboardManager.setPrimaryClip(ClipData.newPlainText(getString(R.string.short_words), model.subject));
                 Toast.makeText(requireContext(), getString(R.string.long_copy_words_notice), Toast.LENGTH_SHORT).show();
             });
-            // FIXME: 2023/10/10 debug打开应用，有时候会一直loading，页面数据也已经加载，但显示空白
+            // FIXME: 2023/10/10 debug打开应用，有时候会一直loading，页面数据也已经加载，但显示空白，下滑翻页可以看到一些挤在一起的文字，打开Layout Inspector又正常了
             hanziWordViewModel.setLoading(false);
         });
 
