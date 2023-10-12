@@ -62,19 +62,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/favorite_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/favorite_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:contentDescription="@string/short_toolbar"
-                tools:menu="@menu/toolbar_favorite_menu"
-                tools:navigationContentDescription="@string/short_placeholder"
-                tools:navigationIcon="@drawable/ic_close"
-                tools:title="@string/short_favorite" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:contentDescription="@string/short_toolbar"
+            app:title="@string/short_favorite"
+            tools:navigationContentDescription="@string/short_placeholder"
+            tools:menu="@menu/toolbar_favorite_menu"
+            tools:navigationIcon="@drawable/ic_close" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

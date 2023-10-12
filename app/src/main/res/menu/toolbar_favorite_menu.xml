@@ -4,9 +4,11 @@
     <item
         android:id="@+id/mi_favorite_batch"
         android:title="@string/short_batch"
+        android:contentDescription="@string/short_batch"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/mi_favorite_batch_cancel"
         android:title="@string/short_cancel"
+        android:contentDescription="@string/short_cancel"
         app:showAsAction="ifRoom" />
 </menu>

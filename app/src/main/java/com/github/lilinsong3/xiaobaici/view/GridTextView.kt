@@ -38,7 +38,7 @@ class GridTextView : View {
         set(value) {
             _text = value
             invalidateTextPaintAndMeasurements()
-            // requestLayout()
+            requestLayout()
         }
 
     /**

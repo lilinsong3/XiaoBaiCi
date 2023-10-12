@@ -19,16 +19,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/histories_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways">
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/histories_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:menu="@menu/toolbar_histories_menu" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+            android:contentDescription="@string/short_toolbar"
+            app:title="@string/short_browsing_histories"
+            app:layout_scrollFlags="scroll|enterAlways"
+            tools:menu="@menu/toolbar_histories_menu" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/histories_chips_date"
