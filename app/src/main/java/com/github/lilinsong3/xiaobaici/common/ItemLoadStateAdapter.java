@@ -1,4 +1,4 @@
-package com.github.lilinsong3.xiaobaici.ui.adapter;
+package com.github.lilinsong3.xiaobaici.common;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -22,11 +22,11 @@ import androidx.recyclerview.selection.StorageStrategy;
 import com.github.lilinsong3.xiaobaici.MainActivityViewModel;
 import com.github.lilinsong3.xiaobaici.NavGraphDirections;
 import com.github.lilinsong3.xiaobaici.R;
+import com.github.lilinsong3.xiaobaici.common.ItemLoadStateAdapter;
 import com.github.lilinsong3.xiaobaici.common.RVItemKeyProvider;
 import com.github.lilinsong3.xiaobaici.common.UnstableIdItemDetailsLookup;
 import com.github.lilinsong3.xiaobaici.common.VMVBFragment;
 import com.github.lilinsong3.xiaobaici.databinding.FragmentFavoriteBinding;
-import com.github.lilinsong3.xiaobaici.ui.adapter.ItemLoadStateAdapter;
 import com.github.lilinsong3.xiaobaici.util.RxUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 

@@ -32,20 +32,6 @@
     <string name="short_confirm">确认</string>
     <string name="long_go_check">前往查看</string>
     <string name="long_nav_menu_item">导航菜单项</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="short_my_favorites">我的收藏夹</string>
     <string name="short_my_favorite">我的收藏</string>
     <string name="short_browsing_histories">浏览历史</string>

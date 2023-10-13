@@ -1,15 +1,4 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
-    </string-array>
-
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
-    </string-array>
-
     <!-- Night Mode Preference -->
     <string-array name="night_mode_entries">
         <item>跟随系统</item>
@@ -21,14 +10,5 @@
         <item>-1</item>
         <item>1</item>
         <item>2</item>
-    </string-array>
-
-    <string-array name="preview_values">
-        <item>测试</item>
-        <item>测试测试</item>
-        <item>测试测试测试测试测试</item>
-        <item>测试测试测试</item>
-        <item>测试</item>
-        <item>测试测试测试测试测试</item>
     </string-array>
 </resources>

@@ -23,8 +23,8 @@ import androidx.recyclerview.widget.ConcatAdapter;
 
 import com.github.lilinsong3.xiaobaici.MainActivityViewModel;
 import com.github.lilinsong3.xiaobaici.NavGraphDirections;
+import com.github.lilinsong3.xiaobaici.common.ItemLoadStateAdapter;
 import com.github.lilinsong3.xiaobaici.databinding.FragmentSearchBinding;
-import com.github.lilinsong3.xiaobaici.ui.adapter.ItemLoadStateAdapter;
 import com.github.lilinsong3.xiaobaici.util.RxUtil;
 import com.github.lilinsong3.xiaobaici.util.StringUtil;
 import com.google.android.material.chip.Chip;

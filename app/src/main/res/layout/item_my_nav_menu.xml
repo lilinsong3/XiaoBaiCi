@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toStartOf="@id/i_text_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_navigation" />
+        tools:srcCompat="@drawable/ic_my" />
 
     <TextView
         android:id="@+id/i_text_title"

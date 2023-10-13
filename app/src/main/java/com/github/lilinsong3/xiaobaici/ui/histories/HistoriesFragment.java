@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.lilinsong3.xiaobaici.MainActivityViewModel;
 import com.github.lilinsong3.xiaobaici.R;
+import com.github.lilinsong3.xiaobaici.common.ItemLoadStateAdapter;
 import com.github.lilinsong3.xiaobaici.common.VMVBFragment;
 import com.github.lilinsong3.xiaobaici.databinding.FragmentHistoriesBinding;
-import com.github.lilinsong3.xiaobaici.ui.adapter.ItemLoadStateAdapter;
 import com.github.lilinsong3.xiaobaici.util.TimeUtil;
 import com.github.lilinsong3.xiaobaici.util.ViewUtil;
 import com.google.android.material.datepicker.CalendarConstraints;

@@ -3,6 +3,5 @@
     android:id="@+id/textSuggestion"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/long_no_suggestion"
     android:paddingVertical="@dimen/padding_small"
     android:paddingHorizontal="@dimen/padding_large" />

@@ -70,7 +70,7 @@
             app:title="@string/short_favorite"
             tools:navigationContentDescription="@string/short_placeholder"
             tools:menu="@menu/toolbar_favorite_menu"
-            tools:navigationIcon="@drawable/ic_close" />
+            tools:navigationIcon="@drawable/ic_app_logo" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

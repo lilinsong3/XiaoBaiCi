@@ -8,6 +8,7 @@
 <!--    <color name="gains_boro">#DCDCDC</color>-->
     <color name="min_text_color">#717171</color>
     <color name="han_bai_yu">#F8F4ED</color>
+    <color name="ic_launcher_background">#FFFBFE</color>
 <!--    <color name="test">#fffbfe</color>-->
 <!--    <color name="tes2">#1c1b1f</color>-->
 </resources>

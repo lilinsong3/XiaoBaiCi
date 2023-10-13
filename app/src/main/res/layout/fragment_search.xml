@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_search_suggestion"
+        tools:listitem="@layout/item_word_card"
         tools:visibility="visible" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -68,7 +68,7 @@
             android:id="@+id/f_search_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:navigationIcon="@drawable/ic_close">
+            tools:navigationIcon="@drawable/ic_app_logo">
             <Button
                 android:id="@+id/f_search_btn_submit"
                 style="@style/Widget.Material3.Button.TextButton"
