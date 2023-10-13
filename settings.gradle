@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "XiaoBaiCi"
 include ':app'
-include ':lib'
