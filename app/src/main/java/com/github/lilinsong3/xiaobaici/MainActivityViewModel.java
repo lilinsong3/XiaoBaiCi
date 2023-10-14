@@ -27,7 +27,7 @@ public class MainActivityViewModel extends ViewModel {
     private final MutableLiveData<Boolean> globalLoading = new MutableLiveData<>(false);
 
     // 两次点击返回退出的毫秒间隔
-    private static final Long twiceOnBackPressedMillisInterval = 2500L;
+    private static final Long TWICE_ON_BACK_PRESSED_MILLIS_INTERVAL = 2500L;
     private Long firstOnBackPressedMillis = 0L;
 
     @Inject
@@ -62,6 +62,6 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public boolean canExit() {
-        return System.currentTimeMillis() - firstOnBackPressedMillis < twiceOnBackPressedMillisInterval;
+        return System.currentTimeMillis() - firstOnBackPressedMillis < TWICE_ON_BACK_PRESSED_MILLIS_INTERVAL;
     }
 }
