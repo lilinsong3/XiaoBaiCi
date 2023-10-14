@@ -2,7 +2,9 @@ package com.github.lilinsong3.xiaobaici;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,12 +37,28 @@ public class MainActivity extends AppCompatActivity {
             super.finish();
         } else {
             NavController navController = navHostFragment.getNavController();
-            navController.addOnDestinationChangedListener((@NonNull NavController controller,
-                                                           @NonNull NavDestination destination,
-                                                           @Nullable Bundle arguments) -> listenOnDestinationChanged(arguments));
             AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.myFragment).build();
+            // 返回键监听
+            getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    NavDestination currentDest = navController.getCurrentDestination();
+                    if (currentDest != null
+                            && appBarConfiguration.getTopLevelDestinations().contains(currentDest.getId())) {
+                        if (mainActivityViewModel.canExit()) {
+                            finish();
+                        } else {
+                            Toast.makeText(MainActivity.this, getString(R.string.long_twice_exit), Toast.LENGTH_SHORT).show();
+                            mainActivityViewModel.rememberFirstOnBackPressedMillis();
+                        }
+                    }
+                }
+            });
+            // 工具栏、底部导航栏设置
             NavigationUI.setupWithNavController(binding.toolbarTop, navController, appBarConfiguration);
             NavigationUI.setupWithNavController(binding.bottomNav, navController);
+            // 目的地变化监听
+            navController.addOnDestinationChangedListener(this::listenOnDestinationChanged);
 
             binding.globalLoading.circularLoading.setVisibilityAfterHide(View.GONE);
 
@@ -63,9 +81,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void listenOnDestinationChanged(@Nullable Bundle arguments) {
+    private void listenOnDestinationChanged(
+            @NonNull NavController controller,
+            @NonNull NavDestination destination,
+            @Nullable Bundle arguments
+    ) {
         setShowTopToolbarData(arguments);
         setShowBottomViewData(arguments);
+
     }
 
     private void setShowTopToolbarData(@Nullable Bundle arguments) {

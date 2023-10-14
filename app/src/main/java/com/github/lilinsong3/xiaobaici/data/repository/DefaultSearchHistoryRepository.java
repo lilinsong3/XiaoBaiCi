@@ -31,31 +31,6 @@ public class DefaultSearchHistoryRepository implements SearchHistoryRepository {
     @Override
     public Completable saveHistory(String rawKeyword) {
         return localDataSource.insert(rawKeyword.trim()).subscribeOn(Schedulers.io());
-//        String keyword = rawKeyword.trim();
-//        return localDataSource.queryAll().takeWhile(list -> needChange(list, keyword)).concatMapCompletable(list -> {
-//            Completable result = localDataSource.insert(keyword);
-//            // 提取需要删除的元素
-//            List<SearchHistoryModel> deletingList = list.stream()
-//                    .filter(historyItem -> {
-//                        int itemIndex = list.indexOf(historyItem);
-//                        return (historyItem.word.equals(keyword) && itemIndex > 0) || itemIndex > MAX_ROW_NUMBER - 2;
-//                    })
-//                    .collect(Collectors.toList());
-//            if (!deletingList.isEmpty()) {
-//                result = localDataSource.delete(deletingList).andThen(result);
-//            }
-//            return result;
-//        }).subscribeOn(Schedulers.io());
-    }
-
-    private Boolean needChange(List<SearchHistoryModel> oldHistories, String searchWord) {
-        if (oldHistories.isEmpty()) {
-            return true;
-        }
-//        if (oldHistories.get(0).word.equals(searchWord)) {
-//            return false;
-//        }
-        return oldHistories.stream().anyMatch(oldHistory -> oldHistory.word.equals(searchWord)) ;
     }
 
     @Override

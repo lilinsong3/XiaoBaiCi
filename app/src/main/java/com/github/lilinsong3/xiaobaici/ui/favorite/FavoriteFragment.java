@@ -144,7 +144,6 @@ public class FavoriteFragment extends VMVBFragment<FavoriteViewModel, FragmentFa
                             return true;
                         }
                         // 点击选择收藏夹
-                        // 先加载所有收藏了被点击的词语的收藏夹，再弹出BottomSheet
                         if (menuItemId.equals(R.id.mi_fh_select)) {
                             navController.navigate(NavGraphDirections.actionGlobalFavoriteSelection().setHanziWordId(hanziWordId));
                             return true;
@@ -207,7 +206,6 @@ public class FavoriteFragment extends VMVBFragment<FavoriteViewModel, FragmentFa
                                 false
                         ).collect(Collectors.toList()))
                         .observeOn(AndroidSchedulers.mainThread())
-//                        .doOnComplete(() -> viewModel.setBatchMode(false))
                         .doOnError(throwable -> Toast.makeText(requireContext(), R.string.long_operation_failed, Toast.LENGTH_SHORT).show())
                         .to(RxUtil.autoDispose(lifecycleOwner))
                         .subscribe();

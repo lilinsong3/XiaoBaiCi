@@ -22,9 +22,6 @@ public interface FavoriteDao {
     @Query("SELECT id FROM Favorite WHERE isDefault = 1")
     Maybe<Long> queryDefaultFavoriteId();
 
-    @Query("SELECT * FROM Favorite WHERE isDefault = 1")
-    Maybe<Favorite> queryDefaultFavorite();
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Single<Long> insert(Favorite favorite);
 
@@ -36,9 +33,6 @@ public interface FavoriteDao {
 
     @Query("SELECT * FROM Favorite WHERE id = :favoriteId")
     Maybe<FavoriteEditModel> query(Long favoriteId);
-
-    @Query("SELECT * FROM Favorite WHERE id = :favoriteId")
-    Maybe<Favorite> queryById(Long favoriteId);
 
     @Query("DELETE FROM Favorite WHERE id = :id")
     Completable deleteById(Long id);

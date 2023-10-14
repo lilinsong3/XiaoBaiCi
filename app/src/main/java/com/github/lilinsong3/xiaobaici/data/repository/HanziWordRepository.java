@@ -16,7 +16,5 @@ public interface HanziWordRepository {
 
     PagingSource<Integer, HanziWordModel> searchPagingHanziWordBy(String keywords);
 
-    PagingSource<Integer, SearchSuggestionModel> getPagingSearchSuggestionBy(String keyword);
-
     Flowable<List<SearchSuggestionModel>> getSearchSuggestionModelsStream(String keyword);
 }

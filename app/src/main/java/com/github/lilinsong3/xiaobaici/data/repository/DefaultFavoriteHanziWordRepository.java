@@ -7,7 +7,6 @@ import com.github.lilinsong3.xiaobaici.data.local.dao.FavoriteHanziWordDao;
 import com.github.lilinsong3.xiaobaici.data.local.entities.FavoriteHanziWordCrossDef;
 import com.github.lilinsong3.xiaobaici.data.model.FavoriteHanziModel;
 import com.github.lilinsong3.xiaobaici.data.model.FavoriteSelectionModel;
-import com.github.lilinsong3.xiaobaici.data.model.WordSubjectModel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,12 +35,6 @@ public class DefaultFavoriteHanziWordRepository implements FavoriteHanziWordRepo
         this.favoriteRepository = favoriteRepository;
     }
 
-
-    @Override
-    public PagingSource<Integer, WordSubjectModel> getPagingFavoriteWordSubjectByFavoriteId(Long id) {
-        return localDataSource.queryPagingFavoriteWordSubjectByFavoriteId(id);
-    }
-
     @Override
     public Completable saveNewFavoriteHanziWords(@NonNull Long hanziWordId, @NonNull Long[] favoriteIds) {
         Completable[] todos = Arrays.stream(favoriteIds)
@@ -60,23 +53,8 @@ public class DefaultFavoriteHanziWordRepository implements FavoriteHanziWordRepo
     }
 
     @Override
-    public Completable removeHanziWordFromAllFavorites(Long hanziWordId) {
-        return localDataSource.clearByHanziWordId(hanziWordId).subscribeOn(Schedulers.io());
-    }
-
-    @Override
     public PagingSource<Integer, FavoriteHanziModel> getPagingFavoriteHanziByFavoriteId(Long id) {
         return localDataSource.queryPagingFavoriteHanziByFavoriteId(id);
-    }
-
-    @Override
-    public Completable clearAllWordsByFavoriteId(Long favoriteId) {
-        return localDataSource.clearByFavoriteId(favoriteId).subscribeOn(Schedulers.io());
-    }
-
-    @Override
-    public Flowable<List<Long>> getSelectedFavoriteIdListStream(Long hanziWordId) {
-        return localDataSource.queryFavoriteIdsByHanziWordId(hanziWordId);
     }
 
     @Override

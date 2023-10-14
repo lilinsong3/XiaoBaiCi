@@ -24,6 +24,7 @@
     <string name="long_scroll_down_more">下滑加载更多</string>
     <string name="long_loading">加载中…</string>
     <string name="long_error">出错了(╥_╥)</string>
+    <string name="long_twice_exit">再按一次退出</string>
     <string name="long_tts_invalid">语音引擎不可用</string>
     <string name="long_no_suggestion">无建议</string>
     <string name="long_hanzi_word_count">词语数量：%d</string>

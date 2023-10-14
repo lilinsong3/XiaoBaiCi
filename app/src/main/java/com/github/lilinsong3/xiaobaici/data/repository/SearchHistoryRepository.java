@@ -8,8 +8,6 @@ import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
 
 public interface SearchHistoryRepository {
-    Integer MAX_ROW_NUMBER = 8;
-
     Flowable<List<SearchHistoryModel>> getSearchHistoryModelStream();
 
     Completable saveHistory(String rawKeyword);

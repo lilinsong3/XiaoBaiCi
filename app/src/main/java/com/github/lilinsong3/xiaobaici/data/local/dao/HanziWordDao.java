@@ -39,21 +39,10 @@ public interface HanziWordDao {
             "ORDER BY quote(hits) DESC, quote(longest_hit) DESC")
     PagingSource<Integer, HanziWordModel> ftsPagingModelBy(String keyword);
 
-//    @Query("SELECT rowid AS id, subject FROM HanziWord WHERE subject LIKE '%' || :keyword || '%'")
-    @Query("SELECT rowid id, subject suggestion FROM HanziWord h JOIN (\n" +
-            "SELECT rowid, matchinfo(HanziWord, 'y') hits, matchinfo(HanziWord, 's') longest_hit FROM HanziWord WHERE subject MATCH :keyword \n" +
-            "ORDER BY quote(hits) DESC, quote(longest_hit) DESC /* LIMIT 20*/\n" +
-            ") rankable \n" +
-            "ON h.rowid = rankable.rowid ORDER BY quote(hits) DESC, quote(longest_hit) DESC")
-    PagingSource<Integer, SearchSuggestionModel> queryPagingSuggestionModelBy(String keyword);
-
     @Query("SELECT rowid id, subject suggestion FROM HanziWord h JOIN (\n" +
             "SELECT rowid, matchinfo(HanziWord, 'y') hits, matchinfo(HanziWord, 's') longest_hit FROM HanziWord WHERE subject MATCH :keyword \n" +
             "ORDER BY quote(hits) DESC, quote(longest_hit) DESC  LIMIT 10\n" +
             ") rankable \n" +
             "ON h.rowid = rankable.rowid ORDER BY quote(hits) DESC, quote(longest_hit) DESC")
     Flowable<List<SearchSuggestionModel>> querySuggestionsBy(String keyword);
-//
-//    @Query("DELETE FROM HanziWord")
-//    int clearAll();
 }

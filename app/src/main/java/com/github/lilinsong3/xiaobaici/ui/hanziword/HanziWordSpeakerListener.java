@@ -1,4 +1,4 @@
-package com.github.lilinsong3.xiaobaici;
+package com.github.lilinsong3.xiaobaici.ui.hanziword;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
@@ -8,6 +8,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
+
+import com.github.lilinsong3.xiaobaici.R;
 
 import java.util.Locale;
 

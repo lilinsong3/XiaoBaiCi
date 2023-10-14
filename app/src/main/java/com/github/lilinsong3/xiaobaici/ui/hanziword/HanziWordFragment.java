@@ -21,7 +21,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.github.lilinsong3.xiaobaici.HanziWordSpeakerListener;
 import com.github.lilinsong3.xiaobaici.MainActivityViewModel;
 import com.github.lilinsong3.xiaobaici.NavGraphDirections;
 import com.github.lilinsong3.xiaobaici.R;

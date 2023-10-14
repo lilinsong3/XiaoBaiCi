@@ -5,7 +5,6 @@ import androidx.paging.PagingSource;
 
 import com.github.lilinsong3.xiaobaici.data.model.FavoriteHanziModel;
 import com.github.lilinsong3.xiaobaici.data.model.FavoriteSelectionModel;
-import com.github.lilinsong3.xiaobaici.data.model.WordSubjectModel;
 
 import java.util.List;
 
@@ -14,14 +13,6 @@ import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Single;
 
 public interface FavoriteHanziWordRepository {
-
-    /**
-     * 根据收藏夹id,获取分页的在该收藏夹下的词语
-     *
-     * @param id 收藏夹id
-     * @return 分页的某个收藏夹下的词语
-     */
-    PagingSource<Integer, WordSubjectModel> getPagingFavoriteWordSubjectByFavoriteId(Long id);
 
     /**
      * 把词语保存到收藏夹<br>
@@ -40,33 +31,12 @@ public interface FavoriteHanziWordRepository {
     Completable addToDefaultFavorite(Long hanziWordId);
 
     /**
-     * 取消所有收藏
-     * @param hanziWordId 要取消收藏的词语id
-     * @return done OR error
-     */
-    Completable removeHanziWordFromAllFavorites(Long hanziWordId);
-
-    /**
      * 根据收藏夹id,获取分页的在该收藏夹下的词语
      *
      * @param id 收藏夹id
      * @return 分页的某个收藏夹下的词语
      */
     PagingSource<Integer, FavoriteHanziModel> getPagingFavoriteHanziByFavoriteId(Long id);
-
-    /**
-     * 清除一个收藏夹下所有的词语
-     * @param favoriteId 收藏夹id
-     * @return done OR error
-     */
-    Completable clearAllWordsByFavoriteId(Long favoriteId);
-
-    /**
-     * 根据词语id，获取所有收藏了该词语的所有收藏夹id
-     * @param hanziWordId 词语id
-     * @return 收藏夹id的可观察流
-     */
-    Flowable<List<Long>> getSelectedFavoriteIdListStream(Long hanziWordId);
 
     /**
      * 根据词语id，获取所有用于选择收藏夹的FavoriteSelectionModel

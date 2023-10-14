@@ -87,9 +87,4 @@ public class DefaultHanziWordRepository implements HanziWordRepository {
     public Flowable<List<SearchSuggestionModel>> getSearchSuggestionModelsStream(String keyword) {
         return localDataSource.querySuggestionsBy(keyword);
     }
-
-    @Override
-    public PagingSource<Integer, SearchSuggestionModel> getPagingSearchSuggestionBy(String keyword) {
-        return localDataSource.queryPagingSuggestionModelBy(keyword);
-    }
 }
