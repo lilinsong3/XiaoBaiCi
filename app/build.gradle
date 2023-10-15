@@ -6,6 +6,30 @@ plugins {
 }
 
 android {
+    // local.properties文件
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    // 签名 key 信息
+    def signingKeyStoreFile = file(properties.getProperty("storeFileDir"))
+    def signingKeyStorePwd = properties.getProperty("storePassword")
+    def signingKeyAlias = properties.getProperty("keyAlias")
+    def signingKeyPwd = properties.getProperty("keyPassword")
+
+    signingConfigs {
+        debug {
+            storeFile signingKeyStoreFile
+            storePassword signingKeyStorePwd
+            keyAlias signingKeyAlias
+            keyPassword signingKeyPwd
+        }
+        release {
+            storeFile signingKeyStoreFile
+            storePassword signingKeyStorePwd
+            keyAlias signingKeyAlias
+            keyPassword signingKeyPwd
+        }
+    }
     namespace 'com.github.lilinsong3.xiaobaici'
     compileSdk 33
 
@@ -29,27 +53,29 @@ android {
         }
     }
 
-    flavorDimensions "version"
-    productFlavors {
-        dev {
-            // The following configuration limits the "dev" flavor to using
-            // English string resources and xxhdpi screen-density resources.
-            dimension "version"
-            applicationIdSuffix ".dev"
-            versionNameSuffix "-dev"
-            resourceConfigurations += ["xxhdpi"]
-        }
-    }
+//    flavorDimensions "version"
+//    productFlavors {
+//        dev {
+//            // The following configuration limits the "dev" flavor to using
+//            // English string resources and xxhdpi screen-density resources.
+//            dimension "version"
+//            applicationIdSuffix ".dev"
+//            versionNameSuffix "-dev"
+//            resourceConfigurations += ["xxhdpi"]
+//        }
+//    }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix ".debug"
             debuggable true
             crunchPngs false
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
