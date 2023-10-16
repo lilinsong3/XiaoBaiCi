@@ -17,6 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.github.lilinsong3.xiaobaici.databinding.ActivityMainBinding;
 
+import java.util.Set;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private ActivityMainBinding binding;
     private MainActivityViewModel mainActivityViewModel;
+
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +40,10 @@ public class MainActivity extends AppCompatActivity {
         if(navHostFragment == null) {
             super.finish();
         } else {
-            NavController navController = navHostFragment.getNavController();
+            navController = navHostFragment.getNavController();
             AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.myFragment).build();
             // 返回键监听
-            getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
-                @Override
-                public void handleOnBackPressed() {
-                    NavDestination currentDest = navController.getCurrentDestination();
-                    if (currentDest != null
-                            && appBarConfiguration.getTopLevelDestinations().contains(currentDest.getId())) {
-                        if (mainActivityViewModel.canExit()) {
-                            finish();
-                        } else {
-                            Toast.makeText(MainActivity.this, getString(R.string.long_twice_exit), Toast.LENGTH_SHORT).show();
-                            mainActivityViewModel.rememberFirstOnBackPressedMillis();
-                        }
-                    }
-                }
-            });
+            setupOnBackPressedExit(appBarConfiguration.getTopLevelDestinations());
             // 工具栏、底部导航栏设置
             NavigationUI.setupWithNavController(binding.toolbarTop, navController, appBarConfiguration);
             NavigationUI.setupWithNavController(binding.bottomNav, navController);
@@ -79,6 +69,26 @@ public class MainActivity extends AppCompatActivity {
                 binding.globalLoading.circularLoading.hide();
             });
         }
+    }
+
+    private void setupOnBackPressedExit(Set<Integer> topLevelDestinations) {
+        // 返回键监听
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavDestination currentDest = navController.getCurrentDestination();
+                if (currentDest != null
+                        && topLevelDestinations.contains(currentDest.getId())) {
+                    if (mainActivityViewModel.canExit()) {
+                        finish();
+                    } else {
+                        Toast.makeText(MainActivity.this, getString(R.string.long_twice_exit), Toast.LENGTH_SHORT).show();
+                        mainActivityViewModel.rememberFirstOnBackPressedMillis();
+                    }
+                }
+            }
+        });
+
     }
 
     private void listenOnDestinationChanged(

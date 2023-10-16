@@ -41,26 +41,28 @@ public class HanziWordSpeakerListener implements DefaultLifecycleObserver {
     public void onCreate(@NonNull LifecycleOwner owner) {
         tts = new TextToSpeech(context, status -> {
             initialized = status == TextToSpeech.SUCCESS;
-            int checkLangAvailable = tts.isLanguageAvailable(Locale.CHINESE);
-            chineseAvailable = checkLangAvailable != TextToSpeech.LANG_MISSING_DATA && checkLangAvailable != TextToSpeech.LANG_NOT_SUPPORTED;
-            if (initialized && chineseAvailable) {
-                tts.setLanguage(Locale.CHINESE);
-                tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-                    @Override
-                    public void onStart(String utteranceId) {
-                        onSpeakStartAction.act(utteranceId);
-                    }
+            if (initialized) {
+                int checkLangAvailable = tts.isLanguageAvailable(Locale.CHINESE);
+                chineseAvailable = checkLangAvailable != TextToSpeech.LANG_MISSING_DATA && checkLangAvailable != TextToSpeech.LANG_NOT_SUPPORTED;
+                if (chineseAvailable) {
+                    tts.setLanguage(Locale.CHINESE);
+                    tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                        @Override
+                        public void onStart(String utteranceId) {
+                            onSpeakStartAction.act(utteranceId);
+                        }
 
-                    @Override
-                    public void onDone(String utteranceId) {
-                        onSpeakDoneAction.act(utteranceId);
-                    }
+                        @Override
+                        public void onDone(String utteranceId) {
+                            onSpeakDoneAction.act(utteranceId);
+                        }
 
-                    @Override
-                    public void onError(String utteranceId) {
-                        Toast.makeText(context, context.getString(R.string.long_error), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onError(String utteranceId) {
+                            Toast.makeText(context, context.getString(R.string.long_error), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
     }
