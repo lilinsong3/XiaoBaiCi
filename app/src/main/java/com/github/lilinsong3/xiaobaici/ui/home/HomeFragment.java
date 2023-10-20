@@ -22,12 +22,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.github.lilinsong3.xiaobaici.MainActivityViewModel;
 import com.github.lilinsong3.xiaobaici.R;
 import com.github.lilinsong3.xiaobaici.databinding.FragmentHomeBinding;
-import com.github.lilinsong3.xiaobaici.util.DataStoreUtil;
-import com.github.lilinsong3.xiaobaici.util.RxUtil;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 import static com.github.lilinsong3.xiaobaici.ui.home.HomeViewModel.OFFSCREEN_PAGE_LIMIT;
 
@@ -58,15 +54,7 @@ public class HomeFragment extends Fragment {
         homeViewModel.setLoading(true);
         final Integer newOrientation = binding.homePager.getOrientation() == ViewPager2.ORIENTATION_HORIZONTAL ?
                 ViewPager2.ORIENTATION_VERTICAL : ViewPager2.ORIENTATION_HORIZONTAL;
-        DataStoreUtil.ignoreSet(requireContext(), DataStoreUtil.HOME_VIEW_PAGER2_ORIENTATION, newOrientation)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(throwable -> {
-                    homeViewModel.setLoading(false);
-                    Toast.makeText(requireContext(), R.string.long_error, Toast.LENGTH_SHORT).show();
-                })
-                .to(RxUtil.autoDispose(getViewLifecycleOwner()))
-                .subscribe();
+        homeViewModel.switchBrowsingOrientation(newOrientation);
         return true;
     }
 
@@ -107,37 +95,32 @@ public class HomeFragment extends Fragment {
         };
 
         // 设置滑动浏览方向
-        DataStoreUtil.get(requireContext(), DataStoreUtil.HOME_VIEW_PAGER2_ORIENTATION)
-                .subscribeOn(Schedulers.io())
-                .onErrorReturnItem(ViewPager2.ORIENTATION_VERTICAL)
-                .defaultIfEmpty(ViewPager2.ORIENTATION_VERTICAL)
-                .filter(orientation -> orientation == ViewPager2.ORIENTATION_VERTICAL || orientation == ViewPager2.ORIENTATION_HORIZONTAL)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(orientation -> {
-                    binding.homePager.setOrientation(orientation);
-                    homeViewModel.setLoading(false);
-                    final MenuItem switchOrientationMenuItem = binding.fHomeToolbar.getMenu().findItem(R.id.mi_switch_orientation);
-                    if (switchOrientationMenuItem != null) {
-                        // 垂直方向
-                        if (orientation == ViewPager2.ORIENTATION_VERTICAL) {
-                            switchOrientationMenuItem.setIcon(R.drawable.ic_swipe_vert);
-                            // 限制生命周期是为了降低toast出现的频率
-                            if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
-                                Toast.makeText(requireContext(), R.string.long_vert_orientation_hint, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        // 水平方向
-                        if (orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
-                            switchOrientationMenuItem.setIcon(R.drawable.ic_swipe_horiz);
-                            if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
-                                Toast.makeText(requireContext(), R.string.long_horiz_orientation_hint, Toast.LENGTH_SHORT).show();
-                            }
-                        }
+        homeViewModel.browsingOrientation.observe(viewLifecycleOwner, orientation -> {
+            if (orientation != ViewPager2.ORIENTATION_VERTICAL && orientation != ViewPager2.ORIENTATION_HORIZONTAL) {
+                return;
+            }
+            binding.homePager.setOrientation(orientation);
+            // TODO: 2023/10/20 检查是否有必要设置loading false
+            homeViewModel.setLoading(false);
+            final MenuItem switchOrientationMenuItem = binding.fHomeToolbar.getMenu().findItem(R.id.mi_switch_orientation);
+            if (switchOrientationMenuItem != null) {
+                // 垂直方向
+                if (orientation == ViewPager2.ORIENTATION_VERTICAL) {
+                    switchOrientationMenuItem.setIcon(R.drawable.ic_swipe_vert);
+                    // 限制生命周期是为了降低toast出现的频率
+                    if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
+                        Toast.makeText(requireContext(), R.string.long_vert_orientation_hint, Toast.LENGTH_SHORT).show();
                     }
-                })
-                .doFinally(() -> homeViewModel.setLoading(false))
-                .to(RxUtil.autoDispose(viewLifecycleOwner))
-                .subscribe();
+                }
+                // 水平方向
+                if (orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
+                    switchOrientationMenuItem.setIcon(R.drawable.ic_swipe_horiz);
+                    if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
+                        Toast.makeText(requireContext(), R.string.long_horiz_orientation_hint, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
 
         // 离屏页面限制数量
         binding.homePager.setOffscreenPageLimit(OFFSCREEN_PAGE_LIMIT);

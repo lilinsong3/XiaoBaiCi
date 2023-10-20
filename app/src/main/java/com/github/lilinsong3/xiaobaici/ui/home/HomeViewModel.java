@@ -9,6 +9,7 @@ import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.github.lilinsong3.xiaobaici.data.repository.BrowsingOrientationRepository;
 import com.github.lilinsong3.xiaobaici.data.repository.HanziWordRepository;
 import com.github.lilinsong3.xiaobaici.data.repository.SearchHistoryRepository;
 
@@ -20,7 +21,6 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.subjects.PublishSubject;
 
 @HiltViewModel
 public class HomeViewModel extends ViewModel {
@@ -37,30 +37,30 @@ public class HomeViewModel extends ViewModel {
     private final MutableLiveData<Integer> viewPosition = new MutableLiveData<>(INITIAL_POSITION);
     private final MediatorLiveData<List<Long>> hanziWordIdData = new MediatorLiveData<>();
 
+    public final LiveData<Integer> browsingOrientation;
+
     private static final String SEARCH_KEYWORD = "keyword";
-    private final PublishSubject<String> debounceSearchInput = PublishSubject.create();
     private final SearchHistoryRepository searchHistoryRepository;
+    private final BrowsingOrientationRepository browsingOrientationRepository;
     private final SavedStateHandle savedStateHandle;
-//    private final MutableLiveData<String> liveInputKeyword = new MutableLiveData<>("");
-//    private final LiveData<String> distinctLiveInputKeyword = Transformations.distinctUntilChanged(liveInputKeyword);
-//    public final LiveData<String> submittingKeyword;
-//    public final LiveData<List<SearchHistoryModel>> searchHistoryList;
-//    public final LiveData<PagingData<SearchSuggestionModel>> searchSuggestions;
-//    public final LiveData<PagingData<HanziWordModel>> searchResults;
 
     @Inject
     public HomeViewModel(
             HanziWordRepository hanziWordRepository,
             SearchHistoryRepository searchHistoryRepository,
+            BrowsingOrientationRepository browsingOrientationRepository,
             SavedStateHandle savedStateHandle
     ) {
         this.hanziWordRepository = hanziWordRepository;
         this.searchHistoryRepository = searchHistoryRepository;
+        this.browsingOrientationRepository = browsingOrientationRepository;
         this.savedStateHandle = savedStateHandle;
 
         LiveData<List<Long>> moreIdData = Transformations.switchMap(viewPosition, currentPosition -> LiveDataReactiveStreams.fromPublisher(loadMoreIds(currentPosition)));
 
         hanziWordIdData.addSource(moreIdData, this::observeMoreIdData);
+
+        browsingOrientation = LiveDataReactiveStreams.fromPublisher(browsingOrientationRepository.getBrowsingOrientationStream());
     }
 
     public void setViewPosition(Integer newPosition) {
@@ -111,6 +111,11 @@ public class HomeViewModel extends ViewModel {
     public void search(String keyword) {
         // 保存历史记录，并触发关键词状态改变
         disposables.add(searchHistoryRepository.saveHistory(keyword).subscribe(() -> savedStateHandle.set(SEARCH_KEYWORD, keyword)));
+    }
+
+    public void switchBrowsingOrientation(Integer orientation) {
+        // TODO: 2023/10/20 要检查的loading是否可以放在这里
+        disposables.add(browsingOrientationRepository.setBrowsingOrientation(orientation).subscribe());
     }
 
     @Override

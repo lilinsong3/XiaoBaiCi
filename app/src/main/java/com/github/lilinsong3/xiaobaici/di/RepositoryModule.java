@@ -1,7 +1,9 @@
 package com.github.lilinsong3.xiaobaici.di;
 
 import com.github.lilinsong3.xiaobaici.data.repository.BrowsingHistoryRepository;
+import com.github.lilinsong3.xiaobaici.data.repository.BrowsingOrientationRepository;
 import com.github.lilinsong3.xiaobaici.data.repository.DefaultBrowsingHistoryRepository;
+import com.github.lilinsong3.xiaobaici.data.repository.DefaultBrowsingOrientationRepository;
 import com.github.lilinsong3.xiaobaici.data.repository.DefaultFavoriteHanziWordRepository;
 import com.github.lilinsong3.xiaobaici.data.repository.DefaultFavoriteRepository;
 import com.github.lilinsong3.xiaobaici.data.repository.DefaultHanziWordRepository;
@@ -41,4 +43,8 @@ public abstract class RepositoryModule {
     @Singleton
     @Binds
     public abstract BrowsingHistoryRepository bindBrowsingHistoryRepository(DefaultBrowsingHistoryRepository defaultBrowsingHistoryRepository);
+
+    @Singleton
+    @Binds
+    public abstract BrowsingOrientationRepository bindBrowsingOrientationRepository(DefaultBrowsingOrientationRepository defaultBrowsingOrientationRepository);
 }
