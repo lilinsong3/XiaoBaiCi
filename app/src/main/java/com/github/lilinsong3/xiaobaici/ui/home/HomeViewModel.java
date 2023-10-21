@@ -114,8 +114,13 @@ public class HomeViewModel extends ViewModel {
     }
 
     public void switchBrowsingOrientation(Integer orientation) {
-        // TODO: 2023/10/20 要检查的loading是否可以放在这里
-        disposables.add(browsingOrientationRepository.setBrowsingOrientation(orientation).subscribe());
+        setLoading(true);
+        disposables.add(
+                browsingOrientationRepository.setBrowsingOrientation(orientation)
+                        .onErrorReturnItem(ViewPager2.ORIENTATION_VERTICAL)
+                        .doOnComplete(() -> loading.postValue(false))
+                        .subscribe()
+        );
     }
 
     @Override

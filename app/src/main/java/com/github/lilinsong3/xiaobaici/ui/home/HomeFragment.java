@@ -51,7 +51,6 @@ public class HomeFragment extends Fragment {
 
     // 切换浏览方向
     private boolean switchOrientation() {
-        homeViewModel.setLoading(true);
         final Integer newOrientation = binding.homePager.getOrientation() == ViewPager2.ORIENTATION_HORIZONTAL ?
                 ViewPager2.ORIENTATION_VERTICAL : ViewPager2.ORIENTATION_HORIZONTAL;
         homeViewModel.switchBrowsingOrientation(newOrientation);
@@ -100,8 +99,6 @@ public class HomeFragment extends Fragment {
                 return;
             }
             binding.homePager.setOrientation(orientation);
-            // TODO: 2023/10/20 检查是否有必要设置loading false
-            homeViewModel.setLoading(false);
             final MenuItem switchOrientationMenuItem = binding.fHomeToolbar.getMenu().findItem(R.id.mi_switch_orientation);
             if (switchOrientationMenuItem != null) {
                 // 垂直方向
