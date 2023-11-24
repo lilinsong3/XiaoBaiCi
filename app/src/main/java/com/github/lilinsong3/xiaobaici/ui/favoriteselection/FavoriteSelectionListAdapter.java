@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.lilinsong3.xiaobaici.R;
-import com.github.lilinsong3.xiaobaici.common.ModelDiffCallback;
+import com.github.lilinsong3.xiaobaici.common.DefaultDiffItemCallback;
 import com.github.lilinsong3.xiaobaici.data.model.FavoriteSelectionModel;
 import com.github.lilinsong3.xiaobaici.databinding.ItemFavoriteSelectableBinding;
 
@@ -27,7 +27,7 @@ public final class FavoriteSelectionListAdapter
     private SelectionTracker<Long> selectionTracker;
 
     public FavoriteSelectionListAdapter() {
-        super(new ModelDiffCallback<>());
+        super(new DefaultDiffItemCallback<>());
         setHasStableIds(true);
     }
 

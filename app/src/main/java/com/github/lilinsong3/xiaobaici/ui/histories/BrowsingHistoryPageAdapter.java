@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.paging.PagingDataAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.lilinsong3.xiaobaici.common.ModelDiffCallback;
+import com.github.lilinsong3.xiaobaici.common.DefaultDiffItemCallback;
 import com.github.lilinsong3.xiaobaici.data.model.BrowsingHistoryModel;
 import com.github.lilinsong3.xiaobaici.databinding.ItemBrowsingHistoryBinding;
 import com.github.lilinsong3.xiaobaici.util.ViewUtil;
@@ -24,7 +24,7 @@ public class BrowsingHistoryPageAdapter extends PagingDataAdapter<BrowsingHistor
             @NonNull ViewUtil.OnItemClickListener<Long> onDeleteIconClickListener,
             @NonNull ViewUtil.OnItemClickListener<Long> onItemClickListener
     ) {
-        super(new ModelDiffCallback<>());
+        super(new DefaultDiffItemCallback<>());
         this.onDeleteIconClickListener = onDeleteIconClickListener;
         this.onItemClickListener = onItemClickListener;
     }

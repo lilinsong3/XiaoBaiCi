@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.lilinsong3.xiaobaici.R;
-import com.github.lilinsong3.xiaobaici.common.ModelDiffCallback;
+import com.github.lilinsong3.xiaobaici.common.DefaultDiffItemCallback;
 import com.github.lilinsong3.xiaobaici.data.model.FavoriteModel;
 import com.github.lilinsong3.xiaobaici.databinding.ItemFavoriteNavBinding;
 import com.github.lilinsong3.xiaobaici.util.ViewUtil;
@@ -20,7 +20,7 @@ public class FavoriteListAdapter extends ListAdapter<FavoriteModel, FavoriteList
     private final ViewUtil.OnItemClickListener<Long> onFavoriteItemClickListener;
 
     protected FavoriteListAdapter(@NonNull ViewUtil.OnItemClickListener<Long> onFavoriteItemClickListener) {
-        super(new ModelDiffCallback<>());
+        super(new DefaultDiffItemCallback<>());
         this.onFavoriteItemClickListener = onFavoriteItemClickListener;
     }
 
