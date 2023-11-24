@@ -5,10 +5,10 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import java.util.Objects;
 
-public class DefaultDiffItemCallback<M> extends DiffUtil.ItemCallback<M>{
+public class DefaultDiffItemCallback<M extends Differentiable> extends DiffUtil.ItemCallback<M>{
     @Override
     public boolean areItemsTheSame(@NonNull M oldItem, @NonNull M newItem) {
-        return Objects.equals(oldItem, newItem);
+        return oldItem.getKey().equals(newItem.getKey());
     }
 
     @Override
@@ -16,3 +16,4 @@ public class DefaultDiffItemCallback<M> extends DiffUtil.ItemCallback<M>{
         return Objects.equals(oldItem, newItem);
     }
 }
+

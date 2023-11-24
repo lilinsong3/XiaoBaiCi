@@ -3,7 +3,9 @@ package com.github.lilinsong3.xiaobaici.data.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class FavoriteSelectionModel {
+import com.github.lilinsong3.xiaobaici.common.Differentiable;
+
+public class FavoriteSelectionModel implements Differentiable {
 
     @NonNull
     public final Long id;
@@ -53,9 +55,9 @@ public class FavoriteSelectionModel {
         return false;
     }
 
+    @NonNull
     @Override
-    public int hashCode() {
-        return id.intValue();
+    public String getKey() {
+        return id.toString();
     }
-
 }

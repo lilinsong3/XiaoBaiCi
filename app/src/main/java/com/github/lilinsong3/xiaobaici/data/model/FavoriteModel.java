@@ -3,9 +3,12 @@ package com.github.lilinsong3.xiaobaici.data.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.github.lilinsong3.xiaobaici.common.Differentiable;
 import com.github.lilinsong3.xiaobaici.data.local.entities.Favorite;
 
-public class FavoriteModel {
+import org.jetbrains.annotations.NotNull;
+
+public class FavoriteModel implements Differentiable {
     @NonNull
     public final Long id;
 
@@ -45,8 +48,9 @@ public class FavoriteModel {
         return false;
     }
 
+    @NotNull
     @Override
-    public int hashCode() {
-        return id.intValue();
+    public String getKey() {
+        return id.toString();
     }
 }

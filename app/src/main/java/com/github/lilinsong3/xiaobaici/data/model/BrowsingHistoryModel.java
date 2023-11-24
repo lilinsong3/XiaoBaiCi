@@ -1,8 +1,11 @@
 package com.github.lilinsong3.xiaobaici.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class BrowsingHistoryModel {
+import com.github.lilinsong3.xiaobaici.common.Differentiable;
+
+public class BrowsingHistoryModel implements Differentiable {
     public final Long hanziWordId;
     public final String wordSubject;
     public final String datetime;
@@ -14,11 +17,6 @@ public class BrowsingHistoryModel {
     }
 
     @Override
-    public int hashCode() {
-        return hanziWordId.intValue();
-    }
-
-    @Override
     public boolean equals(@Nullable Object obj) {
         if (obj instanceof BrowsingHistoryModel) {
             BrowsingHistoryModel model = (BrowsingHistoryModel) obj;
@@ -26,5 +24,11 @@ public class BrowsingHistoryModel {
                     && datetime.equals(model.datetime);
         }
         return false;
+    }
+
+    @NonNull
+    @Override
+    public String getKey() {
+        return hanziWordId.toString();
     }
 }
