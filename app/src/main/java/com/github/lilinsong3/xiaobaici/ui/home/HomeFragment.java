@@ -5,12 +5,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -100,24 +98,12 @@ public class HomeFragment extends Fragment {
             if (orientation != ViewPager2.ORIENTATION_VERTICAL && orientation != ViewPager2.ORIENTATION_HORIZONTAL) {
                 return;
             }
+
             binding.homePager.setOrientation(orientation);
+
             final MenuItem switchOrientationMenuItem = binding.fHomeToolbar.getMenu().findItem(R.id.mi_switch_orientation);
             if (switchOrientationMenuItem != null) {
-                // 垂直方向
-                if (orientation == ViewPager2.ORIENTATION_VERTICAL) {
-                    switchOrientationMenuItem.setIcon(R.drawable.ic_swipe_vert);
-                    // 限制生命周期是为了降低toast出现的频率
-                    if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
-                        Toast.makeText(requireContext(), R.string.long_vert_orientation_hint, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                // 水平方向
-                if (orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
-                    switchOrientationMenuItem.setIcon(R.drawable.ic_swipe_horiz);
-                    if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
-                        Toast.makeText(requireContext(), R.string.long_horiz_orientation_hint, Toast.LENGTH_SHORT).show();
-                    }
-                }
+                switchOrientationMenuItem.setIcon(orientation == ViewPager2.ORIENTATION_VERTICAL ? R.drawable.ic_swipe_horiz : R.drawable.ic_swipe_vert);
             }
         });
 
