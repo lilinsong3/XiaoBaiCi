@@ -52,7 +52,6 @@ public class HomeFragment extends Fragment {
     // 切换浏览方向
     private boolean switchOrientation() {
         // FIXME: 2024/6/27 切换orientation的时候，会出现两个问题：
-        //   1. 切换方向后，某个page原先在HanziWordPageTransformer中已设置的translation没有恢复，从而导致该page在垂直方向上一直离屏
         //   2. 切换方向后，又从第一个page开始展示
         final Integer newOrientation = binding.homePager.getOrientation() == ViewPager2.ORIENTATION_HORIZONTAL ?
                 ViewPager2.ORIENTATION_VERTICAL : ViewPager2.ORIENTATION_HORIZONTAL;
