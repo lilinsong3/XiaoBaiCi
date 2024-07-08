@@ -33,7 +33,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import kotlin.Unit;
 
-// FIXME: 2024/6/27 搜索有时会搜不出结果
+// FIXME: 2024/6/27 搜索词条->点击词条->进入详情界面->返回再次搜索时会搜不出结果
 @AndroidEntryPoint
 public class SearchFragment extends Fragment {
 
